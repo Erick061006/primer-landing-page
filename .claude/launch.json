@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "landing",
+      "runtimeExecutable": "powershell",
+      "runtimeArgs": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "C:\\Users\\erick\\AppData\\Local\\Temp\\claude\\C--Users-erick--claude-spares-spare-flwRkL\\98a41588-0894-4371-a44d-ba4609c65d63\\scratchpad\\serve.ps1", "-Root", "C:\\Users\\erick\\OneDrive\\Escritorio\\Primer Landing Page", "-Port", "8080"],
+      "port": 8080
+    }
+  ]
+}
