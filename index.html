@@ -4,61 +4,83 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Sonrisa Imperial | Clínica Dental</title>
-  <meta name="description" content="Sonrisa Imperial, clínica dental. Agenda tu cita de valoración en minutos.">
+  <meta name="description" content="Sonrisa Imperial, clínica dental. Agenda tu cita de valoración en minutos y confírmala por WhatsApp.">
+  <meta name="theme-color" content="#0f2a44">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+
+  <!-- Símbolo de la marca, reutilizado en logo y sellos -->
+  <svg width="0" height="0" class="sr-only" aria-hidden="true">
+    <symbol id="i-diente" viewBox="0 0 32 32">
+      <path d="M16 6c-2-2-5.5-2.5-8-1S4 9.5 4.5 13c.4 3 1.5 5 2.3 8 .7 2.7 1 6 3 6 2.2 0 2.2-4 3-6.2.6-1.6 1.6-1.8 3.2-1.8s2.6.2 3.2 1.8c.8 2.2.8 6.2 3 6.2 2 0 2.3-3.3 3-6 .8-3 1.9-5 2.3-8 .5-3.5-1-6.5-3.5-8S18 4 16 6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
 
   <!-- Encabezado -->
   <header class="header">
     <div class="container header__inner">
       <a href="#inicio" class="logo">
-        <svg class="logo__icon" viewBox="0 0 32 32" aria-hidden="true">
-          <path d="M16 6c-2-2-5.5-2.5-8-1S4 9.5 4.5 13c.4 3 1.5 5 2.3 8 .7 2.7 1 6 3 6 2.2 0 2.2-4 3-6.2.6-1.6 1.6-1.8 3.2-1.8s2.6.2 3.2 1.8c.8 2.2.8 6.2 3 6.2 2 0 2.3-3.3 3-6 .8-3 1.9-5 2.3-8 .5-3.5-1-6.5-3.5-8S18 4 16 6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-        </svg>
-        <span>Sonrisa <strong>Imperial</strong></span>
+        <svg class="logo__icon" aria-hidden="true"><use href="#i-diente"/></svg>
+        <span>Sonrisa Imperial</span>
       </a>
       <nav class="nav" aria-label="Principal">
         <a href="#servicios">Servicios</a>
         <a href="#nosotros">Nosotros</a>
+        <a href="#opiniones">Opiniones</a>
         <a href="#contacto">Contacto</a>
       </nav>
-      <a href="#agendar" class="btn btn--small">Agendar cita</a>
+      <a href="#agendar" class="btn btn--gold btn--small">Agendar cita</a>
     </div>
   </header>
 
-  <main>
+  <main id="contenido">
     <!-- Portada -->
     <section class="hero" id="inicio">
       <div class="container hero__inner">
         <div class="hero__text">
-          <p class="eyebrow">Clínica dental</p>
           <h1>Una sonrisa cuidada por expertos.</h1>
           <p class="hero__lead">
             Odontología moderna y trato cercano. Agenda tu valoración y conoce el plan ideal para ti.
           </p>
           <div class="hero__actions">
-            <a href="#agendar" class="btn">Agendar mi cita</a>
-            <a href="#servicios" class="btn btn--ghost">Ver servicios</a>
+            <a href="#agendar" class="btn btn--gold">Agendar mi cita</a>
+            <a href="#servicios" class="link link--light">Ver servicios</a>
           </div>
+          <dl class="facts">
+            <div><dt>Horario</dt><dd>Lunes a sábado</dd></div>
+            <div><dt>Primera visita</dt><dd>Valoración y plan</dd></div>
+            <div><dt>Confirmación</dt><dd>Por WhatsApp</dd></div>
+          </dl>
         </div>
-        <ul class="hero__facts">
-          <li>
-            <span class="fact__label">Primera visita</span>
-            <span class="fact__value">Valoración y plan de tratamiento</span>
-          </li>
-          <li>
-            <span class="fact__label">Horario</span>
-            <span class="fact__value">Lunes a sábado</span>
-          </li>
-          <li>
-            <span class="fact__label">Confirmación</span>
-            <span class="fact__value">Por WhatsApp</span>
-          </li>
-        </ul>
+
+        <!-- Tarjeta de cita: el objeto que el paciente se lleva de la clínica -->
+        <a class="ticket ticket--hero" href="#agendar" aria-label="Llenar mi tarjeta de cita">
+          <div class="ticket__head">
+            <svg class="ticket__icon" aria-hidden="true"><use href="#i-diente"/></svg>
+            <span class="ticket__brand">Sonrisa Imperial</span>
+          </div>
+          <p class="ticket__title">Tu próxima cita</p>
+          <dl class="ticket__lines">
+            <div><dt>Paciente</dt><dd>Tú</dd></div>
+            <div><dt>Tratamiento</dt><dd>El que necesites</dd></div>
+            <div class="ticket__pair">
+              <div><dt>Día</dt><dd>El que elijas</dd></div>
+              <div><dt>Hora</dt><dd>La que te acomode</dd></div>
+            </div>
+          </dl>
+          <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true">
+            <defs><path id="arco-hero" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0"/></defs>
+            <circle cx="60" cy="60" r="57" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            <circle cx="60" cy="60" r="33" fill="none" stroke="currentColor" stroke-width="1.2"/>
+            <text class="stamp__text"><textPath href="#arco-hero" textLength="280" lengthAdjust="spacing">CONFIRMACIÓN POR WHATSAPP ✦ SONRISA IMPERIAL ✦</textPath></text>
+            <use href="#i-diente" x="44" y="44" width="32" height="32"/>
+          </svg>
+        </a>
       </div>
     </section>
 
@@ -66,89 +88,152 @@
     <section class="section" id="servicios">
       <div class="container">
         <div class="section__head">
-          <p class="eyebrow">Servicios</p>
           <h2>Todo lo que tu sonrisa necesita</h2>
+          <p>Elige un tratamiento y agenda directo: lo dejamos seleccionado en tu cita.</p>
         </div>
-        <div class="services">
-          <article class="service">
-            <span class="service__meta">Cada 6 meses</span>
-            <h3>Limpieza dental</h3>
-            <p>Prevención y cuidado profesional para mantener dientes y encías sanos.</p>
-          </article>
-          <article class="service">
-            <span class="service__meta">En consultorio</span>
-            <h3>Blanqueamiento</h3>
-            <p>Tonos más claros de forma segura, con resultados naturales.</p>
-          </article>
-          <article class="service">
-            <span class="service__meta">Brackets o alineadores</span>
-            <h3>Ortodoncia</h3>
-            <p>Corrige la posición de tus dientes con la opción que mejor se adapte a ti.</p>
-          </article>
-          <article class="service">
-            <span class="service__meta">Solución fija</span>
-            <h3>Implantes</h3>
-            <p>Recupera piezas perdidas con resultados cómodos y estéticos.</p>
-          </article>
-        </div>
+        <ul class="treatments">
+          <li class="treatment">
+            <div class="treatment__name">
+              <h3>Valoración general</h3>
+              <p class="treatment__meta">Tu primera visita</p>
+            </div>
+            <p class="treatment__desc">Revisamos tu boca, resolvemos tus dudas y te proponemos un plan.</p>
+            <a class="link treatment__book" href="#agendar" data-service="Valoración general">Agendar valoración</a>
+          </li>
+          <li class="treatment">
+            <div class="treatment__name">
+              <h3>Limpieza dental</h3>
+              <p class="treatment__meta">Cada 6 meses</p>
+            </div>
+            <p class="treatment__desc">Prevención y cuidado profesional para mantener dientes y encías sanos.</p>
+            <a class="link treatment__book" href="#agendar" data-service="Limpieza dental">Agendar limpieza</a>
+          </li>
+          <li class="treatment">
+            <div class="treatment__name">
+              <h3>Blanqueamiento</h3>
+              <p class="treatment__meta">En consultorio</p>
+            </div>
+            <p class="treatment__desc">Tonos más claros de forma segura, con resultados naturales.</p>
+            <a class="link treatment__book" href="#agendar" data-service="Blanqueamiento">Agendar blanqueamiento</a>
+          </li>
+          <li class="treatment">
+            <div class="treatment__name">
+              <h3>Ortodoncia</h3>
+              <p class="treatment__meta">Brackets o alineadores</p>
+            </div>
+            <p class="treatment__desc">Corrige la posición de tus dientes con la opción que mejor se adapte a ti.</p>
+            <a class="link treatment__book" href="#agendar" data-service="Ortodoncia">Agendar ortodoncia</a>
+          </li>
+          <li class="treatment">
+            <div class="treatment__name">
+              <h3>Implantes</h3>
+              <p class="treatment__meta">Solución fija</p>
+            </div>
+            <p class="treatment__desc">Recupera piezas perdidas con resultados cómodos y estéticos.</p>
+            <a class="link treatment__book" href="#agendar" data-service="Implantes">Agendar implantes</a>
+          </li>
+        </ul>
       </div>
     </section>
 
     <!-- Nosotros -->
     <section class="section section--alt" id="nosotros">
       <div class="container about">
-        <div class="section__head">
-          <p class="eyebrow">Por qué elegirnos</p>
+        <div class="about__intro">
           <h2>Cuidado de primer nivel, sin complicaciones.</h2>
+          <p>
+            Te explicamos cada paso antes de empezar y cuidamos que tu consulta sea tranquila.
+            <span class="placeholder">[Años de experiencia, especialidades y equipo de la clínica]</span>
+          </p>
+          <figure class="team">
+            <div class="team__photo placeholder" role="img" aria-label="Foto del equipo pendiente">[Foto del equipo]</div>
+            <figcaption><span class="placeholder">[Nombre del dentista]</span>, <span class="placeholder">[especialidad]</span></figcaption>
+          </figure>
         </div>
-        <ul class="features">
-          <li>
-            <h3>Especialistas en cada área</h3>
-            <p>Un equipo en constante actualización para darte el tratamiento adecuado.</p>
-          </li>
-          <li>
-            <h3>Tecnología moderna</h3>
-            <p>Diagnóstico digital y procedimientos menos invasivos.</p>
-          </li>
-          <li>
-            <h3>Tu comodidad primero</h3>
-            <p>Te explicamos cada paso y cuidamos que la consulta sea tranquila.</p>
-          </li>
-        </ul>
+
+        <div class="visit">
+          <h3>Así es tu primera visita</h3>
+          <ol class="steps">
+            <li>
+              <h4>Agendas en un minuto</h4>
+              <p>Llenas tu tarjeta de cita y nos la mandas por WhatsApp. Te respondemos para confirmar.</p>
+            </li>
+            <li>
+              <h4>Te valoramos</h4>
+              <p>Revisamos tu boca con calma y escuchamos lo que te preocupa.</p>
+            </li>
+            <li>
+              <h4>Decides con tu plan en mano</h4>
+              <p>Te explicamos opciones, tiempos y costos antes de iniciar cualquier tratamiento.</p>
+            </li>
+          </ol>
+          <a href="#agendar" class="btn">Agendar mi cita</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonios: reemplazar por opiniones reales con permiso del paciente -->
+    <section class="section" id="opiniones">
+      <div class="container">
+        <div class="section__head">
+          <h2>Lo que dicen nuestros pacientes</h2>
+        </div>
+        <div class="quotes">
+          <figure class="quote">
+            <blockquote><p class="placeholder">[Testimonio real de un paciente, con su permiso para publicarlo.]</p></blockquote>
+            <figcaption><span class="placeholder">[Nombre del paciente]</span><span class="quote__service placeholder">[Tratamiento]</span></figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote><p class="placeholder">[Testimonio real de un paciente, con su permiso para publicarlo.]</p></blockquote>
+            <figcaption><span class="placeholder">[Nombre del paciente]</span><span class="quote__service placeholder">[Tratamiento]</span></figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote><p class="placeholder">[Testimonio real de un paciente, con su permiso para publicarlo.]</p></blockquote>
+            <figcaption><span class="placeholder">[Nombre del paciente]</span><span class="quote__service placeholder">[Tratamiento]</span></figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
     <!-- Agendar -->
-    <section class="section" id="agendar">
+    <section class="section section--alt" id="agendar">
       <div class="container booking">
         <div class="booking__info">
-          <p class="eyebrow">Agenda tu cita</p>
           <h2>Reserva tu valoración en menos de un minuto.</h2>
           <p>
-            Elige el servicio, el día y el horario que prefieras. Al confirmar, te enviamos a WhatsApp
-            con tus datos listos para mandarnos el mensaje.
+            Llena tu tarjeta de cita con el servicio, el día y el horario que prefieras. Al terminar, la
+            envías por WhatsApp con tus datos listos y te confirmamos.
           </p>
-          <ul class="hours">
-            <li><span>Lunes a viernes</span><span>9:00 – 19:00</span></li>
-            <li><span>Sábado</span><span>9:00 – 14:00</span></li>
-            <li><span>Domingo</span><span>Cerrado</span></li>
-          </ul>
+          <table class="hours">
+            <caption>Horario de atención</caption>
+            <tbody>
+              <tr><th scope="row">Lunes a viernes</th><td>9:00 – 19:00</td></tr>
+              <tr><th scope="row">Sábado</th><td>9:00 – 14:00</td></tr>
+              <tr><th scope="row">Domingo</th><td>Cerrado</td></tr>
+            </tbody>
+          </table>
         </div>
 
-        <div class="panel">
+        <div class="ticket ticket--form">
+          <div class="ticket__head">
+            <svg class="ticket__icon" aria-hidden="true"><use href="#i-diente"/></svg>
+            <span class="ticket__brand">Sonrisa Imperial</span>
+          </div>
+
           <form class="form" id="booking-form" novalidate>
-            <div class="field">
-              <label for="nombre">Nombre completo</label>
-              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" autocomplete="name" required>
+            <p class="ticket__title">Tu próxima cita</p>
+            <div class="line">
+              <label for="nombre">Paciente</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" autocomplete="name" required>
             </div>
-            <div class="field">
+            <div class="line">
               <label for="telefono">Teléfono</label>
-              <input type="tel" id="telefono" name="telefono" placeholder="10 dígitos" autocomplete="tel" required>
+              <input type="tel" id="telefono" name="telefono" placeholder="10 dígitos" autocomplete="tel" inputmode="tel" required>
             </div>
-            <div class="field">
-              <label for="servicio">Servicio</label>
+            <div class="line line--select">
+              <label for="servicio">Tratamiento</label>
               <select id="servicio" name="servicio" required>
-                <option value="">Selecciona una opción</option>
+                <option value="">Elige uno</option>
                 <option>Valoración general</option>
                 <option>Limpieza dental</option>
                 <option>Blanqueamiento</option>
@@ -156,13 +241,13 @@
                 <option>Implantes</option>
               </select>
             </div>
-            <div class="field-row">
-              <div class="field">
-                <label for="fecha">Fecha</label>
+            <div class="line-pair">
+              <div class="line">
+                <label for="fecha">Día</label>
                 <input type="date" id="fecha" name="fecha" required>
               </div>
-              <div class="field">
-                <label for="hora">Horario</label>
+              <div class="line line--select">
+                <label for="hora">Hora</label>
                 <select id="hora" name="hora" required>
                   <option value="">Elige</option>
                   <option>Mañana (9:00 – 12:00)</option>
@@ -172,17 +257,21 @@
               </div>
             </div>
             <p class="form__error" id="form-error" role="alert"></p>
-            <button type="submit" class="btn btn--block">Confirmar cita</button>
+            <button type="submit" class="btn btn--block">Revisar mi cita</button>
             <p class="form__note">Sin costo de reservación. Puedes reprogramar cuando lo necesites.</p>
           </form>
 
           <div class="success" id="form-success" hidden>
-            <div class="success__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
-            </div>
-            <h3>Tu cita está lista</h3>
-            <p>Abre WhatsApp y envíanos el mensaje con estos datos. Te confirmaremos a la brevedad.</p>
-            <ul class="summary" id="summary"></ul>
+            <p class="ticket__title" id="success-title" tabindex="-1">Solo falta enviarla</p>
+            <dl class="ticket__lines" id="summary"></dl>
+            <svg class="stamp stamp--success" viewBox="0 0 120 120" aria-hidden="true">
+              <defs><path id="arco-cita" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0"/></defs>
+              <circle cx="60" cy="60" r="57" fill="none" stroke="currentColor" stroke-width="2.5"/>
+              <circle cx="60" cy="60" r="33" fill="none" stroke="currentColor" stroke-width="1.2"/>
+              <text class="stamp__text"><textPath href="#arco-cita" textLength="280" lengthAdjust="spacing">LISTA PARA ENVIAR ✦ SONRISA IMPERIAL ✦</textPath></text>
+              <path d="M47 61l9 9 18-20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p class="success__note">Al enviar el mensaje te respondemos por WhatsApp para confirmar tu horario.</p>
             <div class="success__actions">
               <a class="btn btn--block" id="wa-link" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
               <button type="button" class="btn btn--ghost btn--block" id="edit-booking">Modificar datos</button>
@@ -196,14 +285,33 @@
   <!-- Pie de página -->
   <footer class="footer" id="contacto">
     <div class="container footer__inner">
-      <div>
-        <a href="#inicio" class="logo">Sonrisa <strong>Imperial</strong></a>
-        <p class="footer__muted">Clínica dental</p>
+      <div class="footer__brand">
+        <a href="#inicio" class="logo">
+          <svg class="logo__icon" aria-hidden="true"><use href="#i-diente"/></svg>
+          <span>Sonrisa Imperial</span>
+        </a>
+        <p>Clínica dental en <span class="placeholder">[Ciudad]</span></p>
+        <a href="#agendar" class="btn btn--gold">Agendar mi cita</a>
       </div>
-      <div class="footer__contact">
-        <p>Av. Principal 123, Col. Centro</p>
-        <p><a href="tel:+520000000000">Tel. +52 000 000 0000</a></p>
-        <p><a href="mailto:contacto@sonrisaimperial.com">contacto@sonrisaimperial.com</a></p>
+      <div class="footer__col">
+        <h2>Visítanos</h2>
+        <p class="placeholder">[Dirección de la clínica]</p>
+        <a class="link link--light" href="#" data-placeholder="mapa">Ver en el mapa</a>
+      </div>
+      <div class="footer__col">
+        <h2>Escríbenos o llama</h2>
+        <p class="placeholder">[Teléfono de la clínica]</p>
+        <a class="link link--light" id="wa-direct" href="#" target="_blank" rel="noopener">WhatsApp</a>
+        <p class="footer__social">
+          <a class="link link--light" href="#" data-placeholder="instagram">Instagram</a>
+          <a class="link link--light" href="#" data-placeholder="facebook">Facebook</a>
+        </p>
+      </div>
+      <div class="footer__col">
+        <h2>Horario</h2>
+        <p>Lunes a viernes, 9:00 – 19:00</p>
+        <p>Sábado, 9:00 – 14:00</p>
+        <p>Domingo cerrado</p>
       </div>
     </div>
     <div class="container footer__bottom">

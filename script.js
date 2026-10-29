@@ -5,11 +5,16 @@ const WHATSAPP_NUMBER = "520000000000";
 const form = document.getElementById("booking-form");
 const errorBox = document.getElementById("form-error");
 const success = document.getElementById("form-success");
+const successTitle = document.getElementById("success-title");
 const summary = document.getElementById("summary");
+const stamp = success.querySelector(".stamp--success");
 const waLink = document.getElementById("wa-link");
 const dateInput = document.getElementById("fecha");
+const serviceSelect = document.getElementById("servicio");
+const nameInput = document.getElementById("nombre");
 
 document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("wa-direct").href = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 // No permitir fechas pasadas
 const now = new Date();
@@ -27,18 +32,23 @@ function formatDate(value) {
 
 function validate(data) {
   if (!data.nombre || !data.telefono || !data.servicio || !data.fecha || !data.hora) {
-    return "Completa todos los campos para continuar.";
+    return "Completa todos los renglones para continuar.";
   }
   if (data.telefono.replace(/\D/g, "").length < 10) {
     return "Escribe un teléfono de al menos 10 dígitos.";
   }
   if (data.fecha < dateInput.min) {
-    return "Elige una fecha a partir de hoy.";
+    return "Elige un día a partir de hoy.";
   }
   if (parseDate(data.fecha).getDay() === 0) {
     return "Los domingos está cerrado. Elige otro día.";
   }
   return "";
+}
+
+function showForm() {
+  success.hidden = true;
+  form.hidden = false;
 }
 
 form.addEventListener("submit", (event) => {
@@ -47,7 +57,7 @@ form.addEventListener("submit", (event) => {
   const data = Object.fromEntries([...new FormData(form)].map(([k, v]) => [k, v.trim()]));
 
   form.querySelectorAll("input, select").forEach((field) => {
-    field.classList.toggle("is-invalid", !field.value.trim());
+    field.closest(".line").classList.toggle("is-invalid", !field.value.trim());
   });
 
   const error = validate(data);
@@ -55,21 +65,21 @@ form.addEventListener("submit", (event) => {
   if (error) return;
 
   const rows = [
-    ["Nombre", data.nombre],
+    ["Paciente", data.nombre],
     ["Teléfono", data.telefono],
-    ["Servicio", data.servicio],
-    ["Fecha", formatDate(data.fecha)],
-    ["Horario", data.hora],
+    ["Tratamiento", data.servicio],
+    ["Día", formatDate(data.fecha)],
+    ["Hora", data.hora],
   ];
 
   summary.replaceChildren(...rows.map(([label, value]) => {
-    const li = document.createElement("li");
-    const a = document.createElement("span");
-    const b = document.createElement("span");
-    a.textContent = label;
-    b.textContent = value;
-    li.append(a, b);
-    return li;
+    const row = document.createElement("div");
+    const dt = document.createElement("dt");
+    const dd = document.createElement("dd");
+    dt.textContent = label;
+    dd.textContent = value;
+    row.append(dt, dd);
+    return row;
   }));
 
   const message =
@@ -80,14 +90,30 @@ form.addEventListener("submit", (event) => {
 
   form.hidden = true;
   success.hidden = false;
+
+  // Sellar la tarjeta y llevar el foco al resumen
+  stamp.classList.remove("is-pressed");
+  void stamp.offsetWidth;
+  stamp.classList.add("is-pressed");
+  successTitle.focus();
 });
 
 form.addEventListener("input", (event) => {
-  event.target.classList.remove("is-invalid");
+  event.target.closest(".line")?.classList.remove("is-invalid");
   errorBox.textContent = "";
 });
 
 document.getElementById("edit-booking").addEventListener("click", () => {
-  success.hidden = true;
-  form.hidden = false;
+  showForm();
+  nameInput.focus();
+});
+
+// Agendar desde un servicio: lo deja elegido en la tarjeta
+document.querySelectorAll("[data-service]").forEach((link) => {
+  link.addEventListener("click", () => {
+    showForm();
+    serviceSelect.value = link.dataset.service;
+    serviceSelect.closest(".line").classList.remove("is-invalid");
+    setTimeout(() => nameInput.focus({ preventScroll: true }), 400);
+  });
 });
